@@ -11,16 +11,23 @@ export const FlexRow = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    img {
-        height: 70px;
-        width: auto;
-        object-fit: contain;
-        border-radius: 4px;
+    a.brand {
+        display: flex;
+        align-items: center;
+    
+        img {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 4px;
+        }
     }
 
     @media (max-width: 767px){
-        img {
-            height: 50px;
+        a.brand {
+            img {
+                height: 50px;
+            }
         }
     }
 `;

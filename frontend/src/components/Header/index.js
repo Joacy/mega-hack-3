@@ -15,7 +15,9 @@ function Header () {
         <StyledHeader>
             <div className="container">
                 <FlexRow>
-                    <img src={logo} alt="Cadê a comida?" />
+                    <Link className="brand" to='/'>
+                        <img src={logo} alt="Cadê a comida?" />
+                    </Link>
 
                     <Ul>
                         <li>
