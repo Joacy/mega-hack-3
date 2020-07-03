@@ -1,21 +1,64 @@
 import React, { useState, useEffect } from 'react';
-
+import { useHistory } from 'react-router-dom';
 import { Map, TileLayer, Marker } from 'react-leaflet';
+import axios from 'axios';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Dropzone from '../../components/Dropzone';
 
+import api from '../../services/api';
+
 import { Form } from './styles';
 
-import axios from 'axios';
-
 function RegisterPlace () {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [whatsapp, setWhatsapp] = useState('');
+    const [items, setItems] = useState([]);
 
-    const [selectedImage, setSelectedImage] = useState();
+    async function getItems () {
+        // try {
+        //     const response = await api.get('items');
+
+        //     setItems(response.data);
+        // } catch (error) {
+        //     console.log(error);
+        // }
+        setItems([
+            {
+                id: 1,
+                title: "Comida Caseira",
+                image_url: "https://via.placeholder.com/80"
+            },
+            {
+                id: 2,
+                title: "Comida Japonesa",
+                image_url: "https://via.placeholder.com/80"
+            },
+            {
+                id: 3,
+                title: "Carnes",
+                image_url: "https://via.placeholder.com/80"
+            },
+            {
+                id: 4,
+                title: "Pizza",
+                image_url: "https://via.placeholder.com/80"
+            },
+            {
+                id: 5,
+                title: "Açaí",
+                image_url: "https://via.placeholder.com/80"
+            },
+            {
+                id: 6,
+                title: "Acarajé",
+                image_url: "https://via.placeholder.com/80"
+            }
+        ])
+    };
+
+    useEffect(() => {
+        getItems();
+    }, []);
 
     const [ufs, setUfs] = useState([]);
 
@@ -63,6 +106,13 @@ function RegisterPlace () {
             });
     }, [selectedUF]);
 
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [whatsapp, setWhatsapp] = useState('');
+
+    const [selectedImage, setSelectedImage] = useState();
+
     const [initialPosition, setInicialPosition] = useState([0, 0]);
 
     useEffect(() => {
@@ -82,11 +132,59 @@ function RegisterPlace () {
         ]);
     };
 
+    const [selectedItems, setSelectedItems] = useState([]);
+
+    function handleSelectItem (id) {
+        const alreadySelected = selectedItems.findIndex(item => item === id);
+
+        if (alreadySelected >= 0) {
+            const filteredItems = selectedItems.filter(item => item !== id);
+
+            setSelectedItems(filteredItems);
+        } else {
+            setSelectedItems([...selectedItems, id]);
+        }
+    }
+
+    const history = useHistory();
+
+    async function handleSubmit (e) {
+        e.preventDefault();
+
+        const uf = selectedUF;
+        const city = selectedCity;
+        const [latitude, longitude] = selectedPosition;
+        const items = selectedItems;
+
+        const data = new FormData();
+
+        data.append('name', name);
+        data.append('email', email);
+        data.append('whatsapp', whatsapp);
+        data.append('latitude', String(latitude));
+        data.append('longitude', String(longitude));
+        data.append('city', city);
+        data.append('uf', uf);
+        data.append('items', items.join(','));
+
+        if (selectedImage) {
+            data.append('image', selectedImage);
+        }
+
+        try {
+            await api.post('points', data);
+
+            history.push('/');
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <>
             <Header />
             <div className="container">
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <h1>Cadastro do estabelecimento</h1>
 
                     <Dropzone onFileUploaded={setSelectedImage} />
@@ -141,14 +239,14 @@ function RegisterPlace () {
                             <span>Selecione o endereço no mapa</span>
                         </legend>
 
-                        {/* <Map center={initialPosition} zoom={15} onClick={handleMapClick}>
+                        <Map center={initialPosition} zoom={15} onClick={handleMapClick}>
                             <TileLayer
                                 attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
 
                             <Marker position={selectedPosition} />
-                        </Map> */}
+                        </Map>
 
                         <div className="field-group">
                             <div className="field">
@@ -190,7 +288,7 @@ function RegisterPlace () {
                         </legend>
 
                         <ul className="items-grid">
-                            {/* {items.map(item => (
+                            {items.map(item => (
                                 <li
                                     key={item.id}
                                     onClick={() => handleSelectItem(item.id)}
@@ -199,31 +297,7 @@ function RegisterPlace () {
                                     <img src={item.image_url} alt={item.title} />
                                     <span>{item.title}</span>
                                 </li>
-                            ))} */}
-                            <li>
-                                <img src="" alt=""/>
-                                <span></span>
-                            </li>
-                            <li>
-                                <img src="" alt=""/>
-                                <span></span>
-                            </li>
-                            <li>
-                                <img src="" alt=""/>
-                                <span></span>
-                            </li>
-                            <li>
-                                <img src="" alt=""/>
-                                <span></span>
-                            </li>
-                            <li>
-                                <img src="" alt=""/>
-                                <span></span>
-                            </li>
-                            <li>
-                                <img src="" alt=""/>
-                                <span></span>
-                            </li>
+                            ))}
                         </ul>
                     </fieldset>
 

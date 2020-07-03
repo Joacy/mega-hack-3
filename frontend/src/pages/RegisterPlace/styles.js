@@ -29,6 +29,13 @@ export const Form = styled.form`
                 color: #fcfcfc;
             }
         }
+
+        .leaflet-container {
+            height: 320px;
+            width: 100%;
+            margin-bottom: 24px;
+            border-radius: 4px;
+        }
     }
 
     .field-group {
@@ -37,7 +44,7 @@ export const Form = styled.form`
     }
 
     .field-group .field + .field {
-        margin-left: 24px;
+        margin-left: 20px;
     }
 
     @media(max-width: 767px){
@@ -62,12 +69,12 @@ export const Form = styled.form`
         -moz-appearance: none;
         appearance: none;
         flex: 1;
-        background: #f0f0f5;
-        border-radius: 8px;
-        border: 0;
-        padding: 16px 24px;
-        font-size: 16px;
-        color: #6c6c80;
+        background: #46237A;
+        border: 1px solid #fcfcfc;
+        border-radius: 4px;
+        padding: 10px;
+        font-size: 14px;
+        color: #fcfcfc;
     }
 
     label {
@@ -78,26 +85,25 @@ export const Form = styled.form`
     input[type="text"],
     input[type="email"] {
         flex: 1;
-        background: #f0f0f5;
-        border-radius: 8px;
-        border: 0;
-        padding: 16px 24px;
-        font-size: 16px;
-        color: #6c6c80;
+        background: #46237A;
+        border: 1px solid #fcfcfc;
+        border-radius: 4px;
+        padding: 10px;
+        font-size: 14px;
+        color: #fcfcfc;
     }
 
     .items-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
+        gap: 20px;
         list-style: none;
 
         li {
-            background: #f5f5f5;
-            border: 2px solid #f5f5f5;
-            height: 180px;
-            border-radius: 8px;
-            padding: 32px 24px 16px;
+            background: #46237A;
+            border: 1px solid #fcfcfc;
+            border-radius: 4px;
+            padding: 15px;
 
             display: flex;
             flex-direction: column;
@@ -114,13 +120,17 @@ export const Form = styled.form`
 
                 display: flex;
                 align-items: center;
-                color: #46237A;
+                color: #fcfcfc;
             }
         }
 
         li.selected {
-            background: #e1faec;
-            border: 2px solid #34cb79;
+            border-color: #3DDC97;
+            span {
+                color: #3DDC97;
+                transition: 0.3s;
+            }
+            transition: 0.3s;
         }
     }
 
