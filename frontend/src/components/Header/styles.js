@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
-    background: #315189;
+    background: #fcfcfc;
     padding: 15px 0;
-    color: #f5f5f5;
+    color: #3DDC97;
 `;
 
 export const FlexRow = styled.div`
@@ -45,12 +45,12 @@ export const Ul = styled.ul`
         a {
             font-size: 13px;
             font-weight: bold;
-            color: #f5f5f5;
+            color: #46237A;
             text-decoration: none;
         }
 
         a:hover {
-            color: #f9f9f9;
+            color: #3DDC97;
             transition: 0.3s;
         }
     }

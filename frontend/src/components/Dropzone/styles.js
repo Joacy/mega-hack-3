@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 export const Zone = styled.div`
-    height: 120px;
-    max-width: 600px;
-    margin: 0 auto;
-    background: #9FD1D1;
+    height: 200px;
+    width: 100%;
+    background: #3DDC97;
     border-radius: 4px;
 
     display: flex;
@@ -12,6 +11,7 @@ export const Zone = styled.div`
     align-items: center;
     margin-top: 25px;
     outline: 0;
+    cursor: pointer;
 
     img {
         width: 100%;
@@ -26,19 +26,19 @@ export const Zone = styled.div`
         padding: 10px;
 
         border-radius: 4px;
-        border: 1px dashed #315189;
+        border: 1px dashed #fcfcfc;
 
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        color: #1D254F;
+        color: #fcfcfc;
 
         font-size: 14px;
 
         svg {
-            color: #315189;
+            color: #fcfcfc;
             margin-bottom: 8px;
         }
     }

@@ -8,9 +8,9 @@ import {
     Ul,
 } from './styles';
 
-function Header () {
-    const logo = "https://via.placeholder.com/180x70/9FD1D1/1D254F"
+import logo from '../../assets/logo.jpg';
 
+function Header () {
     return (
         <StyledHeader>
             <div className="container">

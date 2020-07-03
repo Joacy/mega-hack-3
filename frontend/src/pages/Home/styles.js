@@ -4,19 +4,16 @@ export const BoxHome = styled.div`
     padding: 50px 0;
 
     h1 {
-        color: #315189;
         margin-bottom: 10px;
         text-align: center;
     }
 
     h3 {
-        color: #1D254F;
         margin-bottom: 25px;
         text-align: center;
     }
 
     h2 {
-        color: #315189;
         margin-bottom: 25px;
     }
 `;
@@ -36,13 +33,12 @@ export const FoodList = styled.ul`
         text-align: center;
         height: 80px;
         width: 80px;
-        background: #9FD1D1;
+        background: #3DDC97;
         border-radius: 4px;
         
         font-size: 13px;
         font-weight: bold;
-        color: #315189;
-
+        color: #46237A;
         cursor: pointer;
     }
 

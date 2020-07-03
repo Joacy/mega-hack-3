@@ -8,21 +8,12 @@ export default createGlobalStyle`
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
     }
-
-    /* 
-        Paleta de Cores
-
-        bg: #F5F5F5
-        title: #1D254F
-        text: #315189
-        link: #9FD1D1
-    */
     
     body {
         width: 100%;
         height: 100%;
-        background: #f5f5f5;
-        color: #1D254F;
+        background: #46237a;
+        color: #fcfcfc;
         font-family: "Oxygen", sans-serif;
     }
     
