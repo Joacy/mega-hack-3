@@ -8,24 +8,43 @@ export const BoxHome = styled.div`
     flex-direction: column;
     justify-content: center;
 
+    .row {
+        display: flex;
+        width: 100%;
+
+        .col + .col {
+            margin-left: 15px;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 50%;
+
+            img {
+                align-self: center;
+                width: 90%;
+                height: auto;
+                object-fit: contain;
+            }
+        }
+    }
+
     h1 {
         font-size: 40px;
         font-weight: bold;
         margin-bottom: 10px;
-        text-align: center;
         color: #fcfcfc;
     }
 
     h3 {
         font-weight: bold;
         margin-bottom: 25px;
-        text-align: center;
     }
 
     .options {
         display: flex;
-        justify-content: center;
-
         a + a {
             margin-left: 15px;
         }
@@ -45,6 +64,40 @@ export const BoxHome = styled.div`
             a + a {
                 margin: 0;
                 margin-top: 15px;
+            }
+        }
+    }
+
+    @media(max-width: 767px) {
+        justify-content: flex-start;
+        height: auto;
+        
+        h1 {
+            text-align: center;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .options {
+            justify-content: center;
+        }
+
+        .row {
+            flex-wrap: wrap;
+
+            .col + .col {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+
+            .col {
+                width: 100%;
+                
+                img {
+                    width: 100%;
+                }
             }
         }
     }

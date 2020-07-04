@@ -9,6 +9,9 @@ function DetailPlace () {
     return (
         <>
             <Header />
+            <div className="container">
+                
+            </div>
             <Footer />
         </>
     );
