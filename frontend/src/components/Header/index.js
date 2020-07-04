@@ -18,14 +18,6 @@ function Header () {
                     <Link className="brand" to='/'>
                         <img src={logo} alt="Cadê a comida?" />
                     </Link>
-
-                    <Ul>
-                        <li>
-                            <Link to='register-place'>
-                                <span>Cadastrar<br />estabelecimento</span>
-                            </Link>
-                        </li>
-                    </Ul>
                 </FlexRow>
             </div>
         </StyledHeader>

@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 
 import {
     BoxHome,
-    FoodList,
+    Button
 } from './styles';
 
 function Home () {
@@ -17,24 +17,15 @@ function Home () {
                     <h1>Cadê a comida?</h1>
                     <h3>A plataforma que conecta você ao restaurante mais próximo</h3>
 
-                    <h2>O que você pretende comer?</h2>
-                    <FoodList>
-                        <li>
-                            Comida Caseira
-                        </li>
-                        <li>
-                            Comida Japonesa
-                        </li>
-                        <li>
-                            Carnes
-                        </li>
-                        <li>
-                            Pizza
-                        </li>
-                        <li>
-                            Acarajé
-                        </li>
-                    </FoodList>
+                    <div className="options">
+                        <Button to='search-place'>
+                            <span>Buscar local para comer</span>
+                        </Button>
+
+                        <Button to='register-place'>
+                            <span>Cadastrar estabelecimento</span>
+                        </Button>
+                    </div>
                 </div>
             </BoxHome>
             <Footer />

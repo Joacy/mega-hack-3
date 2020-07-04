@@ -83,7 +83,8 @@ export const Form = styled.form`
     }
 
     input[type="text"],
-    input[type="email"] {
+    input[type="email"],
+    textarea {
         flex: 1;
         background: #46237A;
         border: 1px solid #fcfcfc;
@@ -91,6 +92,7 @@ export const Form = styled.form`
         padding: 10px;
         font-size: 14px;
         color: #fcfcfc;
+        font-family: "Oxygen", sans-serif;
     }
 
     .items-grid {
@@ -141,23 +143,25 @@ export const Form = styled.form`
     }
 
     button {
-        padding: 10px 25px;
+        padding: 10px 15px;
         border: 0;
         border-radius: 4px;
+        border: 2px solid #fcfcfc;
         white-space: normal;
         align-self: flex-end;
         margin-top: 35px;
         cursor: pointer;
 
-        background: #fcfcfc;
+        background: transparent;
 
         font-size: 14px;
         font-weight: bold;
-        color: #46237A;
+        color: #fcfcfc;
     }
 
     button:hover{
-        background: #3DDC97;
+        background: #fcfcfc;
+        color: #46237A;
         transition: 0.3s;
     }
 `;

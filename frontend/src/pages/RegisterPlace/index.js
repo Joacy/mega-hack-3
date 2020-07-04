@@ -110,6 +110,7 @@ function RegisterPlace () {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [whatsapp, setWhatsapp] = useState('');
+    const [description, setDescription] = useState('');
 
     const [selectedImage, setSelectedImage] = useState();
 
@@ -161,6 +162,7 @@ function RegisterPlace () {
         data.append('name', name);
         data.append('email', email);
         data.append('whatsapp', whatsapp);
+        data.append('description', description);
         data.append('latitude', String(latitude));
         data.append('longitude', String(longitude));
         data.append('city', city);
@@ -230,6 +232,18 @@ function RegisterPlace () {
                                     required
                                 />
                             </div>
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="description">Descrição</label>
+                            <textarea
+                                name="description"
+                                id="description"
+                                value={description}
+                                onChange={e => setDescription(e.target.value)}
+                                required
+                                rows="5"
+                            ></textarea>
                         </div>
                     </fieldset>
 
