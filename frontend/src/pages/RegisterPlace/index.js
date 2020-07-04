@@ -64,7 +64,7 @@ function RegisterPlace () {
 
     async function getUFs () {
         try {
-            const response = await axios.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados");
+            const response = await axios.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome");
 
             const initials = response.data.map(uf => uf.sigla);
 

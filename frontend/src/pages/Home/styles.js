@@ -22,16 +22,30 @@ export const BoxHome = styled.div`
         text-align: center;
     }
 
-    h2 {
-        margin-bottom: 25px;
-    }
-
     .options {
         display: flex;
         justify-content: center;
 
         a + a {
             margin-left: 15px;
+        }
+    }
+
+    @media(max-width: 767px) {
+        h1 {
+            font-size: 36px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 30px;
+
+            a + a {
+                margin: 0;
+                margin-top: 15px;
+            }
         }
     }
 `;

@@ -5,10 +5,9 @@ import { Link } from 'react-router-dom';
 import {
     StyledHeader,
     FlexRow,
-    Ul,
 } from './styles';
 
-import logo from '../../assets/logo.jpg';
+import logo from '../../assets/tes3.png';
 
 function Header () {
     return (

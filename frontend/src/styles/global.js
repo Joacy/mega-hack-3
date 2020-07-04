@@ -16,7 +16,14 @@ export default createGlobalStyle`
         color: #fcfcfc;
         font-family: "Oxygen", sans-serif;
     }
-    
+
+    input,
+    textarea,
+    button,
+    select {
+        font-family: "Oxygen", sans-serif;
+    }
+
     h1,
     h2,
     h3,
