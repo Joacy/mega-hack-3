@@ -42,15 +42,15 @@ function SearchPlace () {
         }
     }
 
-    const [initialPosition, setInicialPosition] = useState([-12.2323411, -38.9772404]);
+    const [initialPosition, setInicialPosition] = useState([0, 0]);
 
-    // useEffect(() => {
-    //     navigator.geolocation.getCurrentPosition(position => {
-    //         const { latitude, longitude } = position.coords;
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(position => {
+            const { latitude, longitude } = position.coords;
 
-    //         setInicialPosition([latitude, longitude]);
-    //     });
-    // }, []);
+            setInicialPosition([latitude, longitude]);
+        });
+    }, []);
 
     const [points, setPoints] = useState([]);
 
@@ -58,7 +58,6 @@ function SearchPlace () {
 
         try {
 
-<<<<<<< HEAD
             const selectedItemsString = selectedItems.reduce((stringFinal, item) => {
                 if (stringFinal === "")
                     return item;
@@ -67,16 +66,6 @@ function SearchPlace () {
             }, "");
 
             const response = await api.get('points', {
-=======
-            const selectedItemsString = selectedItems.reduce((stringFinal, item)=>{
-                if(stringFinal==="")
-                    return item;
-
-                return stringFinal+","+item;
-            }, "");
-          
-            const response = await api.get('points',{
->>>>>>> e471712302c12995e0b0fa235deafadc191f0ee6
                 params: {
                     items: selectedItemsString,
                 }
