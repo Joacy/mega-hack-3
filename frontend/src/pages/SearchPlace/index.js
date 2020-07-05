@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import Header from '../../components/Header';
@@ -23,38 +22,6 @@ function SearchPlace () {
         } catch (error) {
             console.log(error);
         }
-        //     setItems([
-        //         {
-        //             id: 1,
-        //             title: "Comida Caseira",
-        //             image_url: "https://via.placeholder.com/80"
-        //         },
-        //         {
-        //             id: 2,
-        //             title: "Comida Japonesa",
-        //             image_url: "https://via.placeholder.com/80"
-        //         },
-        //         {
-        //             id: 3,
-        //             title: "Carnes",
-        //             image_url: "https://via.placeholder.com/80"
-        //         },
-        //         {
-        //             id: 4,
-        //             title: "Pizza",
-        //             image_url: "https://via.placeholder.com/80"
-        //         },
-        //         {
-        //             id: 5,
-        //             title: "Açaí",
-        //             image_url: "https://via.placeholder.com/80"
-        //         },
-        //         {
-        //             id: 6,
-        //             title: "Acarajé",
-        //             image_url: "https://via.placeholder.com/80"
-        //         }
-        //     ])
     };
 
     useEffect(() => {
@@ -75,24 +42,32 @@ function SearchPlace () {
         }
     }
 
-    const [initialPosition, setInicialPosition] = useState([0, 0]);
+    const [initialPosition, setInicialPosition] = useState([-12.2323411, -38.9772404]);
 
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition(position => {
-            const { latitude, longitude } = position.coords;
+    // useEffect(() => {
+    //     navigator.geolocation.getCurrentPosition(position => {
+    //         const { latitude, longitude } = position.coords;
 
-            setInicialPosition([latitude, longitude]);
-        });
-    }, []);
+    //         setInicialPosition([latitude, longitude]);
+    //     });
+    // }, []);
 
     const [points, setPoints] = useState([]);
 
     async function getPoints () {
         try {
+
+            const selectedItemsString = selectedItems.reduce((stringFinal, item) => {
+                if (stringFinal === "")
+                    return item;
+
+                return stringFinal + "," + item;
+            }, "");
+
             const response = await api.get('points', {
                 params: {
-                    items: selectedItems,
-                },
+                    items: selectedItemsString,
+                }
             });
 
             setPoints(response.data);
@@ -104,13 +79,6 @@ function SearchPlace () {
     useEffect(() => {
         getPoints();
     }, [getPoints, selectedItems]);
-
-
-    const history = useHistory();
-
-    function navigateToDetail (point) {
-        history.push('detail-place', point);
-    }
 
     return (
         <>
@@ -142,21 +110,25 @@ function SearchPlace () {
                                 />
 
                                 {
-                                    points.map(point => (
-                                        <Marker
-                                            key={point.id}
-                                            position={[point.latitude, point.longitude]}
-                                        >
-                                            <Popup
-                                                closeButton={null}
+                                    typeof points.points !== 'undefined' && Object.keys(points.points).length > 0 ? (
+
+                                        points.points.map(point => (
+                                            <Marker
+                                                key={point.id}
+                                                position={[point.latitude, point.longitude]}
                                             >
-                                                <PlacePopup onClick={() => navigateToDetail(point)}>
-                                                    <img src={point.image} alt="" />
-                                                    <span>{point.name}</span>
-                                                </PlacePopup>
-                                            </Popup>
-                                        </Marker>
-                                    ))
+                                                <Popup
+                                                    closeButton={null}
+                                                >
+                                                    <PlacePopup to={`/detail-place/${point.id}`}>
+                                                        <img src={point.image_url} alt="" />
+                                                        <span>{point.name}</span>
+                                                    </PlacePopup>
+                                                </Popup>
+                                            </Marker>
+                                        )))
+
+                                        : console.log(typeof points.points !== 'undefined' ? points.points : 'undefined')
                                 }
                             </Map>
                         </div>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const BoxSearch = styled.div`
     display: flex;
@@ -112,12 +113,12 @@ export const BoxSearch = styled.div`
 `;
 
 
-export const PlacePopup = styled.div`
+export const PlacePopup = styled(Link)`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+    text-decoration: none;
 
     img {
         height: 50px;
