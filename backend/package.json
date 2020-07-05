@@ -1,31 +1,30 @@
 {
-  "name": "backend",
+  "name": "api-cadeacomida",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev src/server.ts",
-    "knex:seed": "knex --knexfile knexfile.ts seed:run",
-    "knex:migrate": "knex --knexfile knexfile.ts migrate:latest"
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "migrate": "sequelize db:migrate",
+    "seed": "sequelize db:seed:all"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "celebrate": "^12.1.1",
+    "@sentry/node": "5.15.2",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "knex": "^0.21.1",
+    "express-async-errors": "^3.1.1",
+    "express-handlebars": "^4.0.0",
     "multer": "^1.4.2",
-    "sqlite3": "^4.2.0"
+    "pg": "^7.18.2",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.5",
+    "youch": "^2.0.10",
+    "yup": "^0.28.3"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.6",
-    "@types/express": "^4.17.6",
-    "@types/hapi__joi": "^17.1.2",
-    "@types/multer": "^1.4.3",
-    "ts-node": "^8.10.2",
-    "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.9.3"
+    "nodemon": "^2.0.2",
+    "sequelize-cli": "^5.5.1"
   }
 }
