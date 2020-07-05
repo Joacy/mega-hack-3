@@ -1,1 +1,0 @@
-# App Mobile do sistema
