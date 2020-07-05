@@ -1,13 +1,13 @@
 <br>
 
 <h1 align='center'>
-      <img alt="Logo Cade d Comida" title="#logo" src="git/logo.png" width="100px" />
+      <img alt="Logo Cade d Comida" title="#logo" src="../frontend/git/logo.png" width="100px" />
 </h1>
 
 <br>
 
 <h1 align="center">
-    <img align="center" alt="Home Cadê a Comida" title="#home" src="git/capa.png" width="100%" />
+    <img align="center" alt="Home Cadê a Comida" title="#home" src="../frontend/git/capa.png" width="100%" />
 </h1>
 
 <h2 title='#projeto'>
