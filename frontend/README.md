@@ -36,3 +36,14 @@ Foram utilizadas as seguintes bibliotecas:
 - react-dropzone
 - react-leaflet
 - styled-components
+
+Este projeto foi iniciado com [Create React App](https://github.com/facebook/create-react-app).
+
+## Script de execução do projeto
+
+No diretório do projeto, você pode executar:
+
+### `yarn start`
+
+Executa o aplicativo no modo de desenvolvimento. <br />
+Abra [http://localhost:3000](http://localhost:3000) para visualizá-lo no navegador.
