@@ -43,6 +43,10 @@ Este projeto foi iniciado com [Create React App](https://github.com/facebook/cre
 
 No diretório do projeto, você pode executar:
 
+### `yarn install`
+
+Instala as dependências necessárias para a execução do projeto. <br />
+
 ### `yarn start`
 
 Executa o aplicativo no modo de desenvolvimento. <br />
