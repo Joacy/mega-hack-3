@@ -55,8 +55,10 @@ function SearchPlace () {
     const [points, setPoints] = useState([]);
 
     async function getPoints () {
+
         try {
 
+<<<<<<< HEAD
             const selectedItemsString = selectedItems.reduce((stringFinal, item) => {
                 if (stringFinal === "")
                     return item;
@@ -65,6 +67,16 @@ function SearchPlace () {
             }, "");
 
             const response = await api.get('points', {
+=======
+            const selectedItemsString = selectedItems.reduce((stringFinal, item)=>{
+                if(stringFinal==="")
+                    return item;
+
+                return stringFinal+","+item;
+            }, "");
+          
+            const response = await api.get('points',{
+>>>>>>> e471712302c12995e0b0fa235deafadc191f0ee6
                 params: {
                     items: selectedItemsString,
                 }

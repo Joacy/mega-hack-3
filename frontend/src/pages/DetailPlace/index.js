@@ -10,7 +10,6 @@ import api from '../../services/api';
 class DetailPlace extends Component {
     state = {
         point: {},
-        items: [],
     }
 
     async componentDidMount () {
@@ -21,14 +20,13 @@ class DetailPlace extends Component {
             const response = await api.get(`points/${id}`);
 
             this.setState({ point: response.data.point });
-            this.setState({ items: response.data.items });
         } catch (error) {
             alert("Erro ao obter os dados");
         }
     }
 
     render () {
-        const { point, items } = this.state;
+        const { point } = this.state;
 
         return (
             <>
