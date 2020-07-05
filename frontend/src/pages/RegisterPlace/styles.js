@@ -116,6 +116,12 @@ export const Form = styled.form`
 
             cursor: pointer;
 
+            img  {
+                height: 60px;
+                width: auto;
+                object-fit: contain;
+            }
+
             span {
                 flex: 1;
                 margin-top: 12px;

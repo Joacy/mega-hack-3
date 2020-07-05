@@ -47,7 +47,13 @@ export const BoxSearch = styled.div`
                     text-align: center;
 
                     cursor: pointer;
-
+                    
+                    img  {
+                        height: 60px;
+                        width: auto;
+                        object-fit: contain;
+                    }
+                    
                     span {
                         flex: 1;
                         margin-top: 12px;
@@ -102,5 +108,28 @@ export const BoxSearch = styled.div`
                 }
             }
         }
+    }
+`;
+
+
+export const PlacePopup = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+        height: 50px;
+        width: auto;
+        object-fit: contain;
+        margin-bottom: 5px;
+        border-radius: 4px;
+    }
+
+    span {
+        font-size: 12px;
+        font-weight: bold;
+        color: #46237A;
     }
 `;

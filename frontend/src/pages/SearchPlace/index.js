@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Map, TileLayer, Marker } from 'react-leaflet';
+import { useHistory } from 'react-router-dom';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-import { BoxSearch } from './styles';
+import {
+    BoxSearch,
+    PlacePopup
+} from './styles';
 
 import api from '../../services/api';
 
@@ -12,45 +16,45 @@ function SearchPlace () {
     const [items, setItems] = useState([]);
 
     async function getItems () {
-        // try {
-        //     const response = await api.get('items');
+        try {
+            const response = await api.get('items');
 
-        //     setItems(response.data);
-        // } catch (error) {
-        //     console.log(error);
-        // }
-        setItems([
-            {
-                id: 1,
-                title: "Comida Caseira",
-                image_url: "https://via.placeholder.com/80"
-            },
-            {
-                id: 2,
-                title: "Comida Japonesa",
-                image_url: "https://via.placeholder.com/80"
-            },
-            {
-                id: 3,
-                title: "Carnes",
-                image_url: "https://via.placeholder.com/80"
-            },
-            {
-                id: 4,
-                title: "Pizza",
-                image_url: "https://via.placeholder.com/80"
-            },
-            {
-                id: 5,
-                title: "Açaí",
-                image_url: "https://via.placeholder.com/80"
-            },
-            {
-                id: 6,
-                title: "Acarajé",
-                image_url: "https://via.placeholder.com/80"
-            }
-        ])
+            setItems(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+        //     setItems([
+        //         {
+        //             id: 1,
+        //             title: "Comida Caseira",
+        //             image_url: "https://via.placeholder.com/80"
+        //         },
+        //         {
+        //             id: 2,
+        //             title: "Comida Japonesa",
+        //             image_url: "https://via.placeholder.com/80"
+        //         },
+        //         {
+        //             id: 3,
+        //             title: "Carnes",
+        //             image_url: "https://via.placeholder.com/80"
+        //         },
+        //         {
+        //             id: 4,
+        //             title: "Pizza",
+        //             image_url: "https://via.placeholder.com/80"
+        //         },
+        //         {
+        //             id: 5,
+        //             title: "Açaí",
+        //             image_url: "https://via.placeholder.com/80"
+        //         },
+        //         {
+        //             id: 6,
+        //             title: "Acarajé",
+        //             image_url: "https://via.placeholder.com/80"
+        //         }
+        //     ])
     };
 
     useEffect(() => {
@@ -87,8 +91,6 @@ function SearchPlace () {
         try {
             const response = await api.get('points', {
                 params: {
-                    // city: routeParams.city,
-                    // uf: routeParams.uf,
                     items: selectedItems,
                 },
             });
@@ -102,6 +104,13 @@ function SearchPlace () {
     useEffect(() => {
         getPoints();
     }, [getPoints, selectedItems]);
+
+
+    const history = useHistory();
+
+    function navigateToDetail (point) {
+        history.push('detail-place', point);
+    }
 
     return (
         <>
@@ -132,14 +141,23 @@ function SearchPlace () {
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 />
 
-                                <Marker position={initialPosition} />
-                                {points.map(point => (
-                                    <Marker
-                                        key={point.id}
-                                        onClick={() => (point.id)}
-                                        position={[point.latitude, point.longitude]}
-                                    />
-                                ))}
+                                {
+                                    points.map(point => (
+                                        <Marker
+                                            key={point.id}
+                                            position={[point.latitude, point.longitude]}
+                                        >
+                                            <Popup
+                                                closeButton={null}
+                                            >
+                                                <PlacePopup onClick={() => navigateToDetail(point)}>
+                                                    <img src={point.image} alt="" />
+                                                    <span>{point.name}</span>
+                                                </PlacePopup>
+                                            </Popup>
+                                        </Marker>
+                                    ))
+                                }
                             </Map>
                         </div>
                     </div>

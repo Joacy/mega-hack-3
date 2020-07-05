@@ -15,45 +15,46 @@ function RegisterPlace () {
     const [items, setItems] = useState([]);
 
     async function getItems () {
-        // try {
-        //     const response = await api.get('items');
+        try {
+            const response = await api.get('items');
 
-        //     setItems(response.data);
-        // } catch (error) {
-        //     console.log(error);
-        // }
-        setItems([
-            {
-                id: 1,
-                title: "Comida Caseira",
-                image_url: "https://via.placeholder.com/80"
-            },
-            {
-                id: 2,
-                title: "Comida Japonesa",
-                image_url: "https://via.placeholder.com/80"
-            },
-            {
-                id: 3,
-                title: "Carnes",
-                image_url: "https://via.placeholder.com/80"
-            },
-            {
-                id: 4,
-                title: "Pizza",
-                image_url: "https://via.placeholder.com/80"
-            },
-            {
-                id: 5,
-                title: "Açaí",
-                image_url: "https://via.placeholder.com/80"
-            },
-            {
-                id: 6,
-                title: "Acarajé",
-                image_url: "https://via.placeholder.com/80"
-            }
-        ])
+            setItems(response.data);
+            console.log(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+        // setItems([
+        //     {
+        //         id: 1,
+        //         title: "Comida Caseira",
+        //         image_url: "https://via.placeholder.com/80"
+        //     },
+        //     {
+        //         id: 2,
+        //         title: "Comida Japonesa",
+        //         image_url: "https://via.placeholder.com/80"
+        //     },
+        //     {
+        //         id: 3,
+        //         title: "Carnes",
+        //         image_url: "https://via.placeholder.com/80"
+        //     },
+        //     {
+        //         id: 4,
+        //         title: "Pizza",
+        //         image_url: "https://via.placeholder.com/80"
+        //     },
+        //     {
+        //         id: 5,
+        //         title: "Açaí",
+        //         image_url: "https://via.placeholder.com/80"
+        //     },
+        //     {
+        //         id: 6,
+        //         title: "Acarajé",
+        //         image_url: "https://via.placeholder.com/80"
+        //     }
+        // ])
     };
 
     useEffect(() => {
