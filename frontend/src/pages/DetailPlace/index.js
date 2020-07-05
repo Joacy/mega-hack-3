@@ -44,7 +44,6 @@ class DetailPlace extends Component {
                         <h4>Entre em contato conosco, faça um pedido!</h4>
 
                         <a
-                            hrefLang
                             href={"https://api.whatsapp.com/send?1=pt_BR&phone=" + point.whatsapp}
                             target="_blank"
                         >
